@@ -36,7 +36,7 @@ Knowledge infrastructure · cognitive debt from AI-without-substrate · agent-na
 
 - **Monochrome.** No accent colour. Black-and-white scale only.
 - **Never pure black or pure white** for text or backgrounds. Light theme: bg `#ffffff`, text `#1d1d1f`. Dark theme: bg `#111111`, text `#e6e6e6`. The Mesh's reading research informs these choices — pure values cause eye strain on long-form.
-- **Typography:** Charter for headings and body, Inter for UI, IBM Plex Mono for kickers, meta, wordmark, code. Do not introduce new font families.
+- **Typography:** Charter for headings and body, Inter for UI, IBM Plex Mono for kickers, meta, wordmark, code. Do not introduce new font families. If you ever do, the font's license file must ship alongside the woff2 in `public/fonts/<family>/LICENSE.txt`, and any required attribution (e.g. trademark acknowledgments) must be added to [`NOTICE.md`](NOTICE.md).
 - **Reading width:** ~640px (`--reading-width` CSS variable). Single centred column.
 - **Header is always dark chrome.** Wordmark `t15n` in IBM Plex Mono 600; name `Thibaut Tiberghien` in Inter 400, dimmer; separator is `·`. Do not add explanatory text like "(= Thibaut Tiberghien)" or a tooltip — let the pattern speak.
 - **Theme toggle:** three states (auto → light → dark → auto), persisted to `localStorage` under `t15n-theme`.

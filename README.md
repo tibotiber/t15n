@@ -76,3 +76,7 @@ wrangler.jsonc            Workers config; assets binding + HTML text rule
 ## Design
 
 Monochrome — no accent colour. Light: `#ffffff` background, `#1d1d1f` text. Dark: `#111111` background, `#e6e6e6` text. Header is always dark. Theme preference persists to `localStorage` under `t15n-theme`.
+
+## Third-party notices
+
+Self-hosted fonts and their licenses are listed in [NOTICE.md](NOTICE.md). Charter is used under the 1992 Bitstream X Consortium grant; Inter and IBM Plex Mono are used under the SIL Open Font License 1.1.
