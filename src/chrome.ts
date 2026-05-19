@@ -7,6 +7,19 @@ export interface PostMeta {
   content: string
 }
 
+export interface OgInfo {
+  title?: string
+  description?: string
+  slug?: string
+  path?: string
+  type?: 'website' | 'article'
+  date?: string
+  tag?: string
+}
+
+const SITE = 'https://t15n.io'
+const DEFAULT_DESC = 'On the substrate agent-collaborative thinking needs. Long-form writing by Thibaut Tiberghien.'
+
 const THEME_SCRIPT = `<script>try{var _t=localStorage.getItem("t15n-theme");if(_t)document.documentElement.setAttribute("data-theme",_t)}catch(e){}<\/script>`
 
 const THEME_TOGGLE_SCRIPT = `<script>
@@ -37,8 +50,20 @@ const THEME_TOGGLE_SCRIPT = `<script>
 })();
 <\/script>`
 
-function head(title: string, description?: string): string {
-  const desc = description ?? 'On the substrate agent-collaborative thinking needs. Long-form writing by Thibaut Tiberghien.'
+function head(title: string, description: string | undefined, og: OgInfo): string {
+  const desc = description ?? DEFAULT_DESC
+  const ogTitle = og.title ?? title
+  const ogDesc = og.description ?? desc
+  const slug = og.slug ?? 'index'
+  const path = og.path ?? '/'
+  const type = og.type ?? 'website'
+  const imageUrl = `${SITE}/og/${slug}.png`
+  const pageUrl = `${SITE}${path}`
+  const articleTags =
+    type === 'article'
+      ? `
+  <meta property="article:author" content="Thibaut Tiberghien">${og.date ? `\n  <meta property="article:published_time" content="${esc(og.date)}">` : ''}${og.tag ? `\n  <meta property="article:tag" content="${esc(og.tag)}">` : ''}`
+      : ''
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,9 +71,24 @@ function head(title: string, description?: string): string {
   ${THEME_SCRIPT}
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="${esc(desc)}">
+  <meta name="author" content="Thibaut Tiberghien">
   <link rel="stylesheet" href="/styles.css">
   <link rel="alternate" type="application/rss+xml" title="t15n" href="/rss.xml">
   <title>${esc(title)} — t15n</title>
+  <meta property="og:title" content="${esc(ogTitle)}">
+  <meta property="og:description" content="${esc(ogDesc)}">
+  <meta property="og:image" content="${imageUrl}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="${pageUrl}">
+  <meta property="og:type" content="${type}">
+  <meta property="og:site_name" content="t15n">${articleTags}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${esc(ogTitle)}">
+  <meta name="twitter:description" content="${esc(ogDesc)}">
+  <meta name="twitter:image" content="${imageUrl}">
+  <meta name="twitter:creator" content="@tibotiber">
+  <meta name="twitter:site" content="@tibotiber">
 </head>
 <body>`
 }
@@ -83,8 +123,8 @@ function esc(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 
-export function page(title: string, body: string, description?: string): string {
-  return `${head(title, description)}
+export function page(title: string, body: string, description?: string, og: OgInfo = {}): string {
+  return `${head(title, description, og)}
 ${header()}
 ${body}
 ${footer()}

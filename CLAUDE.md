@@ -20,6 +20,14 @@ Two-line change in [`worker.ts`](worker.ts): one `import` for the new HTML file,
 
 The leading HTML comment carries metadata (`title`, `date`, `summary`, `topics`) — parsed by `parseMeta()` in `worker.ts`.
 
+After adding a post — or renaming a slug, changing a title, or rewording the homepage tagline — regenerate the Open Graph cards:
+
+```
+yarn og
+```
+
+This rebuilds every `public/og/*.png` from `src/posts/` and the homepage layout. Commit the changed PNGs alongside the content change. The cards are 1200×630 dark-theme PNGs served as static assets at `/og/<slug>.png` and `/og/index.png`. Generator lives in [`scripts/build-og.ts`](scripts/build-og.ts); fonts are TTF copies of the woff2 web fonts in [`src/fonts/`](src/fonts/) (satori needs TTF). The `<meta property="og:*">` tags themselves are emitted from [`src/chrome.ts`](src/chrome.ts) — runtime, not pre-rendered.
+
 ## Voice — do not author posts unless explicitly asked
 
 - The voice is Thibaut's. Substantive, opinionated, calm.

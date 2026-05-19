@@ -77,7 +77,17 @@ function renderIndex(): string {
   </ul>
 </div>`
 
-  return page('Writing', body, 'Long-form writing by Thibaut Tiberghien on knowledge infrastructure, agent-native teams, and opinionated tools.')
+  return page(
+    'Writing',
+    body,
+    'Long-form writing by Thibaut Tiberghien on knowledge infrastructure, agent-native teams, and opinionated tools.',
+    {
+      title: 't15n',
+      description: 'On the substrate thinking-with-agents needs.',
+      slug: 'index',
+      path: '/',
+    },
+  )
 }
 
 function postContent(post: PostMeta): { rawHtml: string; markdown: string } {
@@ -105,7 +115,13 @@ function renderPost(post: PostMeta): string {
   <article>${contentWithTime}${postEnd}
   </article>
 </div>`
-  return page(post.title, body, post.summary || undefined)
+  return page(post.title, body, post.summary || undefined, {
+    slug: post.slug,
+    path: `/${post.slug}`,
+    type: 'article',
+    date: post.date,
+    tag: post.topics[0],
+  })
 }
 
 function renderPostMarkdown(post: PostMeta): string {
@@ -149,7 +165,10 @@ function renderAbout(): string {
     <p>On <a href="https://x.com/tibotiber">X</a> as @tibotiber. Email me at <a href="mailto:thibaut@smplrspace.com">thibaut@smplrspace.com</a>.</p>
   </article>
 </div>`
-  return page('About', body)
+  return page('About', body, 'Thibaut Tiberghien — founder of Smplrspace, building The Mesh.', {
+    slug: 'index',
+    path: '/about',
+  })
 }
 
 function render404(): string {
