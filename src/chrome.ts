@@ -32,11 +32,13 @@ const THEME_TOGGLE_SCRIPT = `<script>
     render();
   });
   render();
+  var copyEl=document.getElementById('pe-copy');
+  if(copyEl){copyEl.addEventListener('click',function(e){e.preventDefault();var orig=this.textContent;navigator.clipboard.writeText(window.location.href).then(function(){copyEl.textContent='Copied!';setTimeout(function(){copyEl.textContent=orig},1500)});})}
 })();
 <\/script>`
 
 function head(title: string, description?: string): string {
-  const desc = description ?? 'Long-form writing by Thibaut Tiberghien on knowledge infrastructure, agent-native teams, and opinionated tools.'
+  const desc = description ?? 'On the substrate agent-collaborative thinking needs. Long-form writing by Thibaut Tiberghien.'
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,17 +65,17 @@ function header(): string {
     <a href="/about">about</a>
     <a href="/rss.xml">rss</a>
     <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">
-      <svg id="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"></svg>
+      <svg id="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></svg>
     </button>
   </nav>
 </header>`
 }
 
-function footer(year: number): string {
+function footer(): string {
   return `<footer>
-  <span>Thibaut Tiberghien &middot; ${year}</span>
-  <span class="footer-sep">&middot;</span>
-  <a href="https://the-mesh.app">The Mesh</a>
+  <span class="ft-mark">t15n</span>
+  <span class="ft-byline">Thibaut Tiberghien · <a href="https://x.com/tibotiber">@tibotiber on X</a> · <a href="mailto:thibaut@smplrspace.com">thibaut@smplrspace.com</a> · <a href="/rss.xml">RSS</a></span>
+  <span class="ft-note">Built on Cloudflare. HTML by hand, mine or Claude's.</span>
 </footer>`
 }
 
@@ -82,11 +84,10 @@ function esc(s: string): string {
 }
 
 export function page(title: string, body: string, description?: string): string {
-  const year = new Date().getFullYear()
   return `${head(title, description)}
 ${header()}
 ${body}
-${footer(year)}
+${footer()}
 ${THEME_TOGGLE_SCRIPT}
 </body>
 </html>`

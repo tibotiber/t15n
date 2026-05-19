@@ -1,13 +1,14 @@
 import { page, formatDate } from './src/chrome'
 import type { PostMeta } from './src/chrome'
 import { generateRSS } from './src/rss'
+import { htmlToMarkdown, readingTime } from './src/markdown'
 
 // --- Post registry ---
 // Add one import + one entry here for each new post.
-import pipelineHtml from './src/posts/2026-05-19-pipeline.html'
+import fifteenYearsHtml from './src/posts/2026-05-19-fifteen-years.html'
 
 const POST_FILES: Array<{ filename: string; content: string }> = [
-  { filename: '2026-05-19-pipeline.html', content: pipelineHtml },
+  { filename: '2026-05-19-fifteen-years.html', content: fifteenYearsHtml },
 ]
 
 // --- Metadata parser ---
@@ -42,22 +43,35 @@ const POSTS: PostMeta[] = POST_FILES.map(({ filename, content }) => parseMeta(co
 
 const POST_BY_SLUG = new Map(POSTS.map((p) => [p.slug, p]))
 
+// --- Helpers ---
+
+function wantsMarkdown(request: Request, url: URL): boolean {
+  const format = url.searchParams.get('format')
+  if (format === 'markdown' || format === 'md') return true
+  return (request.headers.get('Accept') ?? '').includes('text/markdown')
+}
+
+const MD_HEADERS = { 'Content-Type': 'text/markdown; charset=utf-8' }
+
 // --- Page renderers ---
 
 function renderIndex(): string {
-  const items = POSTS.map(
-    (p) => `
+  const items = POSTS.map((p) => {
+    const kicker = p.topics[0] ? p.topics[0].charAt(0).toUpperCase() + p.topics[0].slice(1) : ''
+    const kickerHtml = kicker
+      ? `<div class="post-item-kicker">${kicker} · ${formatDate(p.date)}</div>`
+      : `<div class="post-item-kicker">${formatDate(p.date)}</div>`
+    return `
   <li class="post-item">
+    ${kickerHtml}
     <h2 class="post-item-title"><a href="/${p.slug}">${p.title}</a></h2>
-    <div class="post-item-meta">${formatDate(p.date)}</div>
     <p class="post-item-summary">${p.summary}</p>
-  </li>`,
-  ).join('')
+  </li>`
+  }).join('')
 
   const body = `<div class="page">
-  <div class="index-header">
-    <h1>t15n</h1>
-    <p>Long-form writing by Thibaut Tiberghien.</p>
+  <div class="index-intro">
+    <p>On the substrate thinking-with-agents needs.</p>
   </div>
   <ul class="post-list">${items}
   </ul>
@@ -66,20 +80,62 @@ function renderIndex(): string {
   return page('Writing', body, 'Long-form writing by Thibaut Tiberghien on knowledge infrastructure, agent-native teams, and opinionated tools.')
 }
 
+function postContent(post: PostMeta): { rawHtml: string; markdown: string } {
+  const rawHtml = post.content.replace(/^[\s\n]*<!--[\s\S]*?-->[\s\n]*/, '')
+  const markdown = htmlToMarkdown(rawHtml)
+  return { rawHtml, markdown }
+}
+
 function renderPost(post: PostMeta): string {
-  // Strip the leading HTML comment (metadata block) before rendering
-  const content = post.content.replace(/^[\s\n]*<!--[\s\S]*?-->[\s\n]*/, '')
+  const { rawHtml, markdown } = postContent(post)
+  const timeStr = readingTime(markdown)
+  const contentWithTime = rawHtml.replace(
+    /<div class="kicker">([^<]*)<\/div>/,
+    `<div class="kicker">$1 · <span class="reading-time">${timeStr}</span></div>`,
+  )
+  const shareUrl = `https://t15n.io/${post.slug}`
+  const shareText = encodeURIComponent(post.title)
+  const postEnd = `
+  <div class="pe-actions">
+    <a href="#" class="pe-link" id="pe-copy">Copy link</a>
+    <span class="pe-dot">·</span>
+    <a href="https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&amp;text=${shareText}" class="pe-link" target="_blank" rel="noopener">Share on X</a>
+  </div>`
   const body = `<div class="page">
-  <article>${content}
+  <article>${contentWithTime}${postEnd}
   </article>
 </div>`
   return page(post.title, body, post.summary || undefined)
+}
+
+function renderPostMarkdown(post: PostMeta): string {
+  const { markdown } = postContent(post)
+  const topics = post.topics.join(', ')
+  const frontmatter = `---
+title: ${post.title}
+date: ${post.date}
+summary: ${post.summary}
+topics: ${topics}
+slug: ${post.slug}
+url: https://t15n.io/${post.slug}
+---`
+  return frontmatter + '\n\n' + markdown
+}
+
+function renderIndexMarkdown(): string {
+  const items = POSTS.map((p) => {
+    const topics = p.topics.length ? ` · ${p.topics.join(', ')}` : ''
+    return `### [${p.title}](https://t15n.io/${p.slug})\n${formatDate(p.date)}${topics}\n\n${p.summary}`
+  }).join('\n\n---\n\n')
+  return `# t15n\n\nOn the substrate thinking-with-agents needs.\n\n---\n\n${items}`
 }
 
 function renderAbout(): string {
   const body = `<div class="page">
   <article>
     <div class="kicker">About</div>
+    <h1>Thibaut Tiberghien.</h1>
+    <p class="lead">Founder of <a href="https://smplrspace.com">Smplrspace</a>. Building <a href="https://the-mesh.app">The Mesh</a> — a shared knowledge base for teams working with AI.</p>
     <p>I run <a href="https://smplrspace.com">Smplrspace</a>, a data-visualization company for commercial real estate, and I'm building <a href="https://the-mesh.app">The Mesh</a>, a shared knowledge base for teams working with AI.</p>
 
     <p>When I paused recently to look at what actually interested me, fifteen years of work connected into one thread: making digital things and ideas tangible so they can be manipulated, understood, and decided on. Tangible user interfaces during my Master's in Germany. A PhD on semantic web technologies — knowledge structured as graphs you can navigate, where the shape itself derives new information. Years of data-visualization work. Smplrspace, which anchors building data to the space it describes and visualizes it in place. The Mesh, which turns thinking into a permanent, visible, addressable asset for the team, instead of letting it die in chat windows. Same impulse, different scopes.</p>
@@ -111,11 +167,13 @@ function render404(): string {
 
 export default {
   async fetch(request: Request): Promise<Response> {
-    const { pathname } = new URL(request.url)
-    const baseUrl = new URL(request.url).origin
+    const url = new URL(request.url)
+    const { pathname } = url
+    const md = wantsMarkdown(request, url)
 
     // Homepage
     if (pathname === '/' || pathname === '') {
+      if (md) return new Response(renderIndexMarkdown(), { headers: MD_HEADERS })
       return new Response(renderIndex(), { headers: { 'Content-Type': 'text/html; charset=utf-8' } })
     }
 
@@ -126,15 +184,16 @@ export default {
 
     // RSS feed
     if (pathname === '/rss.xml') {
-      return new Response(generateRSS(POSTS, baseUrl), {
+      return new Response(generateRSS(POSTS, url.origin), {
         headers: { 'Content-Type': 'application/rss+xml; charset=utf-8' },
       })
     }
 
     // Post pages: /<slug>
-    const slug = pathname.slice(1) // strip leading /
+    const slug = pathname.slice(1)
     const post = POST_BY_SLUG.get(slug)
     if (post) {
+      if (md) return new Response(renderPostMarkdown(post), { headers: MD_HEADERS })
       return new Response(renderPost(post), { headers: { 'Content-Type': 'text/html; charset=utf-8' } })
     }
 
