@@ -54,9 +54,13 @@ If the user asks for one of these, build it. If not, do not propose it.
 
 Port `8015`, pinned in both `wrangler.jsonc` (`dev.port`) and `.claude/launch.json`. Keep them in sync if the port ever changes.
 
+## Package manager
+
+Yarn 4 (Berry), pinned via the `packageManager` field in `package.json`. Activated through Corepack — `corepack enable` is the one-time setup. Do not introduce `npm install` or `pnpm` workflows; the lockfile is `yarn.lock`. `.yarnrc.yml` uses `nodeLinker: node-modules` (no PnP) to keep wrangler/esbuild happy.
+
 ## CI
 
-GitHub Actions runs `npm run lint` (`tsc --noEmit`) only. No deploy job — Cloudflare's GitHub integration handles deployment on push to `main`. Do not add a deploy step to CI.
+GitHub Actions runs `yarn lint` (`tsc --noEmit`) only. No deploy job — Cloudflare's GitHub integration handles deployment on push to `main`. Do not add a deploy step to CI.
 
 ## Related repos
 

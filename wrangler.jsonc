@@ -9,10 +9,6 @@
   "assets": {
     "directory": "./public"
   },
-  // Treat .html files in src/ as importable text modules
-  "rules": [
-    { "type": "Text", "globs": ["**/*.html"] }
-  ],
   "observability": {
     "enabled": true
   },

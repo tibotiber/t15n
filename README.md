@@ -14,8 +14,9 @@ Pure HTML, generated in TypeScript on a Cloudflare Worker. No framework, no CMS,
 ## Local dev
 
 ```bash
-npm install
-npm run dev
+corepack enable     # one-time; activates the pinned Yarn 4
+yarn install
+yarn dev
 ```
 
 Runs `wrangler dev` on port `8015`.

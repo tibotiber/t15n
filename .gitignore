@@ -3,3 +3,12 @@ node_modules/
 dist/
 .dev.vars
 .claude/settings.local.json
+
+# Yarn 4 — commit releases/sdks/patches, ignore everything else
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
