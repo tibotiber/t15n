@@ -4,7 +4,7 @@
   "main": "worker.ts",
   "compatibility_date": "2026-05-19",
   "compatibility_flags": ["nodejs_compat"],
-  "account_id": "4955c8c28610ecabc384d84a20458a53",
+  "account_id": "e165c910133e1d69cf5cde81b60c7a44",
   "workers_dev": false,
   "assets": {
     "directory": "./public"
