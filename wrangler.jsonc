@@ -1,0 +1,22 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "t15n",
+  "main": "worker.ts",
+  "compatibility_date": "2026-05-19",
+  "compatibility_flags": ["nodejs_compat"],
+  "account_id": "4955c8c28610ecabc384d84a20458a53",
+  "workers_dev": false,
+  "assets": {
+    "directory": "./public"
+  },
+  // Treat .html files in src/ as importable text modules
+  "rules": [
+    { "type": "Text", "globs": ["**/*.html"] }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "dev": {
+    "port": 8015
+  }
+}
