@@ -149,9 +149,14 @@ function renderIndexMarkdown(): string {
 function renderAbout(): string {
   const body = `<div class="page">
   <article>
-    <div class="kicker">About</div>
-    <h1>Thibaut Tiberghien.</h1>
-    <p>I run <a href="https://smplrspace.com" target="_blank" rel="noopener">Smplrspace</a>, a data-visualization company for commercial real estate, and I'm building The Mesh, an opinionated context layer where the understanding you build with AI doesn't evaporate when the session ends.</p>
+    <div class="about-top">
+      <div class="about-top-text">
+        <div class="kicker">About</div>
+        <h1>Thibaut Tiberghien.</h1>
+        <p>I run <a href="https://smplrspace.com" target="_blank" rel="noopener">Smplrspace</a>, a data-visualization company for commercial real estate, and I'm building The Mesh, an opinionated context layer where the understanding you build with AI doesn't evaporate when the session ends.</p>
+      </div>
+      <img class="about-photo" src="/img/about-photo.jpg" alt="Thibaut Tiberghien" width="1000" height="1000">
+    </div>
 
     <p>When I paused recently to look at what actually interested me, fifteen years of work connected into one thread: making digital things and ideas tangible so they can be manipulated, understood, and decided on. Tangible user interfaces during my Master's in Germany. A PhD on semantic web technologies — knowledge structured as graphs you can navigate, where the shape itself derives new information. Years of data-visualization work. Smplrspace, which anchors building data to the space it describes and visualizes it in place. The Mesh, which turns thinking into a permanent, visible, addressable asset for the team, instead of letting it die in chat windows. Same impulse, different scopes.</p>
 

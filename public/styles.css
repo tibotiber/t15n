@@ -336,6 +336,50 @@ hr {
 }
 .index-intro p + p { margin-top: 24px; }
 
+/* ================================================================
+   ABOUT
+================================================================ */
+.about-top {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  margin-right: -10px;
+}
+.about-top-text {
+  flex: 1;
+  min-width: 0;
+}
+.about-top-text .kicker { margin-top: 0; }
+.about-top-text h1 { margin-top: 0; }
+.about-top-text p:last-child { margin-bottom: 0; }
+
+.about-photo {
+  flex-shrink: 0;
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.08) brightness(0.98);
+  border-radius: 4px;
+}
+
+@media (max-width: 560px) {
+  .about-top {
+    flex-direction: column-reverse;
+    gap: 24px;
+    align-items: center;
+    margin-right: 0;
+  }
+  .about-top-text { width: 100%; }
+  .about-top-text .kicker,
+  .about-top-text h1,
+  .about-top-text p { text-align: left; }
+  .about-photo {
+    width: 210px;
+    height: 210px;
+  }
+}
+
 .post-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
 
 .post-item {
