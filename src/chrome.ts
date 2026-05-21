@@ -15,10 +15,11 @@ export interface OgInfo {
   type?: 'website' | 'article'
   date?: string
   tag?: string
+  fullTitle?: string
 }
 
 const SITE = 'https://t15n.io'
-const DEFAULT_DESC = 'On the substrate agent-collaborative thinking needs. Long-form writing by Thibaut Tiberghien.'
+const DEFAULT_DESC = 'On the substrate thinking-with-agents needs. Notes by Thibaut Tiberghien alongside building The Mesh.'
 
 const THEME_SCRIPT = `<script>try{var _t=localStorage.getItem("t15n-theme");if(_t)document.documentElement.setAttribute("data-theme",_t)}catch(e){}<\/script>`
 
@@ -52,7 +53,8 @@ const THEME_TOGGLE_SCRIPT = `<script>
 
 function head(title: string, description: string | undefined, og: OgInfo): string {
   const desc = description ?? DEFAULT_DESC
-  const ogTitle = og.title ?? title
+  const titleText = og.fullTitle ?? `${title} — t15n`
+  const ogTitle = og.title ?? titleText
   const ogDesc = og.description ?? desc
   const slug = og.slug ?? 'index'
   const path = og.path ?? '/'
@@ -74,7 +76,7 @@ function head(title: string, description: string | undefined, og: OgInfo): strin
   <meta name="author" content="Thibaut Tiberghien">
   <link rel="stylesheet" href="/styles.css">
   <link rel="alternate" type="application/rss+xml" title="t15n" href="/rss.xml">
-  <title>${esc(title)} — t15n</title>
+  <title>${esc(titleText)}</title>
   <meta property="og:title" content="${esc(ogTitle)}">
   <meta property="og:description" content="${esc(ogDesc)}">
   <meta property="og:image" content="${imageUrl}">

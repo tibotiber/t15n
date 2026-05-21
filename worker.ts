@@ -72,6 +72,7 @@ function renderIndex(): string {
   const body = `<div class="page">
   <div class="index-intro">
     <p>On the substrate thinking-with-agents needs.</p>
+    <p>Notes alongside building The Mesh, an opinionated context layer where the understanding you build with AI doesn't evaporate when the session ends.</p>
   </div>
   <ul class="post-list">${items}
   </ul>
@@ -80,12 +81,11 @@ function renderIndex(): string {
   return page(
     'Writing',
     body,
-    'Long-form writing by Thibaut Tiberghien on knowledge infrastructure, agent-native teams, and opinionated tools.',
+    'Notes on knowledge infrastructure, agent-native teams, and opinionated tools.',
     {
-      title: 't15n',
-      description: 'On the substrate thinking-with-agents needs.',
       slug: 'index',
       path: '/',
+      fullTitle: 't15n - Thibaut Tiberghien',
     },
   )
 }
@@ -151,8 +151,7 @@ function renderAbout(): string {
   <article>
     <div class="kicker">About</div>
     <h1>Thibaut Tiberghien.</h1>
-    <p class="lead">Founder of <a href="https://smplrspace.com">Smplrspace</a>. Building <a href="https://the-mesh.app">The Mesh</a> — a shared knowledge base for teams working with AI.</p>
-    <p>I run <a href="https://smplrspace.com">Smplrspace</a>, a data-visualization company for commercial real estate, and I'm building <a href="https://the-mesh.app">The Mesh</a>, a shared knowledge base for teams working with AI.</p>
+    <p>I run <a href="https://smplrspace.com">Smplrspace</a>, a data-visualization company for commercial real estate, and I'm building The Mesh, an opinionated context layer where the understanding you build with AI doesn't evaporate when the session ends.</p>
 
     <p>When I paused recently to look at what actually interested me, fifteen years of work connected into one thread: making digital things and ideas tangible so they can be manipulated, understood, and decided on. Tangible user interfaces during my Master's in Germany. A PhD on semantic web technologies — knowledge structured as graphs you can navigate, where the shape itself derives new information. Years of data-visualization work. Smplrspace, which anchors building data to the space it describes and visualizes it in place. The Mesh, which turns thinking into a permanent, visible, addressable asset for the team, instead of letting it die in chat windows. Same impulse, different scopes.</p>
 
@@ -165,7 +164,7 @@ function renderAbout(): string {
     <p>On <a href="https://x.com/tibotiber">X</a> as @tibotiber. Email me at <a href="mailto:thibaut@smplrspace.com">thibaut@smplrspace.com</a>.</p>
   </article>
 </div>`
-  return page('About', body, 'Thibaut Tiberghien — founder of Smplrspace, building The Mesh.', {
+  return page('About', body, 'Thibaut Tiberghien, founder of Smplrspace. Building The Mesh, an opinionated context layer where the understanding you build with AI doesn\'t evaporate when the session ends.', {
     slug: 'index',
     path: '/about',
   })
