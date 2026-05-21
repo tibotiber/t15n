@@ -6,7 +6,7 @@
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "og": "tsx scripts/build-og.ts",
-    "lint": "tsc --noEmit && tsc --noEmit -p tsconfig.scripts.json"
+    "lint": "tsc --noEmit && tsc --noEmit -p tsconfig.scripts.json && tsx scripts/lint-external-links.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20240529.0",
