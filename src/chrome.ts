@@ -49,6 +49,18 @@ const THEME_TOGGLE_SCRIPT = `<script>
   render();
   var copyEl=document.getElementById('pe-copy');
   if(copyEl){copyEl.addEventListener('click',function(e){e.preventDefault();var orig=this.textContent;navigator.clipboard.writeText(window.location.href).then(function(){copyEl.textContent='Copied!';setTimeout(function(){copyEl.textContent=orig},1500)});})}
+  document.addEventListener('click',function(e){
+    var anchor=e.target&&e.target.closest?e.target.closest('.aside-anchor'):null;
+    document.querySelectorAll('.aside-anchor.is-revealed').forEach(function(el){if(el!==anchor)el.classList.remove('is-revealed')});
+    if(anchor){
+      var willOpen=!anchor.classList.contains('is-revealed');
+      if(willOpen){
+        var rect=anchor.getBoundingClientRect();
+        anchor.style.setProperty('--aside-top',(rect.bottom+10)+'px');
+      }
+      anchor.classList.toggle('is-revealed');
+    }
+  });
 })();
 <\/script>`
 

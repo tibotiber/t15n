@@ -209,8 +209,9 @@ article { max-width: var(--reading-width); }
 }
 
 /* ----------------------------------------------------------------
-   Aside tooltip — date hover-reveal. No visible cue on the anchor
-   itself; the styled card on hover is the only signal.
+   Aside tooltip — date reveal. No visible cue on the anchor itself;
+   the styled card is the only signal. Desktop: hover. Touch: tap to
+   toggle (a small script in chrome.ts manages the `.is-revealed` class).
 ---------------------------------------------------------------- */
 .aside-anchor {
   position: relative;
@@ -243,9 +244,29 @@ article { max-width: var(--reading-width); }
   transition: opacity 0.35s ease;
 }
 
-.aside-anchor:hover::after {
-  opacity: 1;
-  transition-delay: 0.05s;
+@media (hover: hover) {
+  .aside-anchor:hover::after {
+    opacity: 1;
+    transition-delay: 0.05s;
+  }
+}
+
+@media (hover: none) {
+  .aside-anchor.is-revealed::after {
+    opacity: 1;
+    transition-delay: 0.05s;
+  }
+}
+
+@media (max-width: 480px) and (hover: none) {
+  .aside-anchor::after {
+    position: fixed;
+    top: var(--aside-top, 100%);
+    left: 20px;
+    right: 20px;
+    width: auto;
+    max-width: none;
+  }
 }
 
 h1 {
