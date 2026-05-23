@@ -31,6 +31,7 @@ Runs `wrangler dev` on port `8015`.
    date: 2026-06-01
    summary: One-line summary for the index and RSS feed.
    topics: knowledge-infrastructure, agent-native-teams
+   aside: First noted 2025-09-04 — sat in drafts for nine months.
    -->
 
    <div class="kicker">Essay · 1 June 2026</div>
@@ -39,6 +40,8 @@ Runs `wrangler dev` on port `8015`.
 
    <p>Body…</p>
    ```
+
+   The `aside` field is required — the worker throws at startup if it's missing. It's surfaced as a hover-reveal tooltip on the date in the rendered post. See [CLAUDE.md](CLAUDE.md) for what to put in it.
 
 2. Register the post in [`worker.ts`](worker.ts) by adding two lines:
 

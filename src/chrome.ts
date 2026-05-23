@@ -3,6 +3,7 @@ export interface PostMeta {
   date: string
   summary: string
   topics: string[]
+  aside: string
   slug: string
   content: string
 }
@@ -121,7 +122,7 @@ function footer(): string {
 </footer>`
 }
 
-function esc(s: string): string {
+export function esc(s: string): string {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
 

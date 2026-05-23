@@ -18,7 +18,22 @@ Thibaut Tiberghien's personal long-form blog at t15n.io. Companion to The Mesh �
 
 Two-line change in [`worker.ts`](worker.ts): one `import` for the new HTML file, one entry in the `POST_FILES` array. Posts sort by date automatically. See [README.md](README.md) for the full template.
 
-The leading HTML comment carries metadata (`title`, `date`, `summary`, `topics`) — parsed by `parseMeta()` in `worker.ts`.
+The leading HTML comment carries metadata (`title`, `date`, `summary`, `topics`, `aside`) — parsed by `parseMeta()` in `worker.ts`. The `aside` field is required — the worker throws at startup if it's missing. See "Aside — the date hover-reveal" below.
+
+### Aside — the date hover-reveal
+
+Every post carries an `aside:` line. On the homepage list and on the rendered post page, the date is wrapped in `<span class="aside-anchor" data-aside="...">`. The date itself has no visual treatment — no underline, no cursor change, no nothing. On hover, a styled tooltip card appears (CSS-only, no JS): `.aside-anchor::after` in [`public/styles.css`](public/styles.css), using `--bg2` / `--fg2` / `--border` from the design tokens, Inter at 13px, 50ms hover delay before a 350ms opacity fade-in (only deliberate hovers trigger it; the slow fade reads as a reveal rather than a system tooltip). The card is the only signal that anything exists. A dotted underline or `cursor: help` would read as "the author prepared something for you," which deflates the discovery — the absence of any cue is the point.
+
+Desktop only — `:hover` doesn't really fire on touch. Not exposed in markdown or RSS. An LLM scraping or summarising the post never sees the aside.
+
+One to three lines of plain text, in Thibaut's voice — a sentence, or a couple of sentences, not a paragraph. The constraint: it has to be something an LLM couldn't plausibly fabricate about him specifically — that's the whole point of the feature. The value lives on a single physical line inside the HTML metadata comment (the parser splits on `\n`); the tooltip wraps the text on render. If you want an explicit line break inside the tooltip, write the literal two characters `\n` in the metadata value — `asideAttr()` in [`worker.ts`](worker.ts) converts each `\n` to the `&#10;` HTML entity, and `white-space: pre-line` on `.aside-anchor::after` renders it as a break. Four flavors to pick from (mix freely across posts — no need to pick one and stick to it):
+
+- **Gestation** — when the idea was first noted vs. when it shipped. *"First noted 2025-08-14 in a margin of the Mesh compass doc — sat in drafts for nine months while I tried to find an opening that wasn't a manifesto."* On-brand: the blog argues against AI-fast cognition, and the aside proves the work didn't come out instantly.
+- **Provenance** — what specifically triggered the post. *"After a call with a CTO who'd shipped three agents and couldn't explain what any of them actually did. He wasn't embarrassed about it, which was the part that stayed with me."*
+- **Location** — where it was written. *"Drafted in Singapore the week the haze rolled in, edited on the train to KL with a flat white going cold."*
+- **Marginalia** — a question you didn't answer, a counter-argument you suppressed, a follow-up you owe. *"The accountability point cuts the other way too — what happens when the agent is the one being asked to defend the work? Left for a later post."*
+
+Do **not** author asides on Thibaut's behalf unless explicitly asked. If a post is added with a placeholder (`aside: TODO — ...`) the worker still starts, but the placeholder must be replaced before deploy.
 
 After adding a post — or renaming a slug, changing a title, or rewording the homepage tagline — regenerate the Open Graph cards:
 

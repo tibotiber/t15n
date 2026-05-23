@@ -1,4 +1,4 @@
-import { page, formatDate } from './src/chrome'
+import { page, formatDate, esc } from './src/chrome'
 import type { PostMeta } from './src/chrome'
 import { generateRSS } from './src/rss'
 import { htmlToMarkdown, readingTime } from './src/markdown'
@@ -6,9 +6,11 @@ import { htmlToMarkdown, readingTime } from './src/markdown'
 // --- Post registry ---
 // Add one import + one entry here for each new post.
 import fifteenYearsHtml from './src/posts/2026-05-19-fifteen-years.html'
+import colleagueICantBlameHtml from './src/posts/2026-05-23-the-colleague-i-cant-blame.html'
 
 const POST_FILES: Array<{ filename: string; content: string }> = [
   { filename: '2026-05-19-fifteen-years.html', content: fifteenYearsHtml },
+  { filename: '2026-05-23-the-colleague-i-cant-blame.html', content: colleagueICantBlameHtml },
 ]
 
 // --- Metadata parser ---
@@ -26,11 +28,15 @@ function parseMeta(html: string, filename: string): PostMeta {
   // Derive slug from filename: YYYY-MM-DD-my-slug.html → my-slug
   const slugMatch = filename.match(/^\d{4}-\d{2}-\d{2}-(.+)\.html$/)
   const slug = slugMatch ? slugMatch[1] : filename.replace(/\.html$/, '')
+  if (!meta['aside']) {
+    throw new Error(`Post ${filename} is missing required 'aside' metadata.`)
+  }
   return {
     title: meta['title'] ?? 'Untitled',
     date: meta['date'] ?? '',
     summary: meta['summary'] ?? '',
     topics: meta['topics'] ? meta['topics'].split(',').map((t) => t.trim()) : [],
+    aside: meta['aside'],
     slug,
     content: html,
   }
@@ -42,6 +48,12 @@ const POSTS: PostMeta[] = POST_FILES.map(({ filename, content }) => parseMeta(co
 )
 
 const POST_BY_SLUG = new Map(POSTS.map((p) => [p.slug, p]))
+
+// Encode an aside for a `data-aside` attribute: HTML-escape, then turn
+// literal `\n` sequences into the newline entity so CSS `pre-line` can render them.
+function asideAttr(s: string): string {
+  return esc(s).replace(/\\n/g, '&#10;')
+}
 
 // --- Helpers ---
 
@@ -58,9 +70,10 @@ const MD_HEADERS = { 'Content-Type': 'text/markdown; charset=utf-8' }
 function renderIndex(): string {
   const items = POSTS.map((p) => {
     const kicker = p.topics[0] ? p.topics[0].charAt(0).toUpperCase() + p.topics[0].slice(1) : ''
+    const dateHtml = `<span class="aside-anchor" data-aside="${asideAttr(p.aside)}">${formatDate(p.date)}</span>`
     const kickerHtml = kicker
-      ? `<div class="post-item-kicker">${kicker} · ${formatDate(p.date)}</div>`
-      : `<div class="post-item-kicker">${formatDate(p.date)}</div>`
+      ? `<div class="post-item-kicker">${kicker} · ${dateHtml}</div>`
+      : `<div class="post-item-kicker">${dateHtml}</div>`
     return `
   <li class="post-item">
     ${kickerHtml}
@@ -99,9 +112,12 @@ function postContent(post: PostMeta): { rawHtml: string; markdown: string } {
 function renderPost(post: PostMeta): string {
   const { rawHtml, markdown } = postContent(post)
   const timeStr = readingTime(markdown)
+  const dateStr = formatDate(post.date)
+  const dateMarkup = `<span class="aside-anchor" data-aside="${asideAttr(post.aside)}">${dateStr}</span>`
   const contentWithTime = rawHtml.replace(
     /<div class="kicker">([^<]*)<\/div>/,
-    `<div class="kicker">$1 · <span class="reading-time">${timeStr}</span></div>`,
+    (_match, inner) =>
+      `<div class="kicker">${inner.replace(dateStr, dateMarkup)} · <span class="reading-time">${timeStr}</span></div>`,
   )
   const shareUrl = `https://t15n.io/${post.slug}`
   const shareText = encodeURIComponent(post.title)

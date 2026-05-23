@@ -50,6 +50,7 @@ function parseMeta(html: string, filename: string): PostMeta {
     date: meta['date'] ?? '',
     summary: meta['summary'] ?? '',
     topics: meta['topics'] ? meta['topics'].split(',').map((t) => t.trim()) : [],
+    aside: meta['aside'] ?? '',
     slug,
     content: html,
   }

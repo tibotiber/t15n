@@ -1,0 +1,82 @@
+<!--
+title: The colleague I can't blame
+date: 2026-05-23
+summary: Working with Claude has come to feel less like using a tool and more like interacting with a colleague. The care that sets up a colleague for good work sets up an agent the same way. What doesn't transfer is accountability.
+topics: agents
+aside: Me: Ha ha ha, I just got rickrolled. Good job.\nClaude: Classic. At least it's a memorable test case — you'll never forget which page was used to validate the YouTube embed placeholder.
+-->
+
+<div class="kicker">Agents · 23 May 2026</div>
+<h1>The colleague I can't blame</h1>
+<p class="lead">After a few months of working with Claude, I've found the texture of the experience increasingly human.
+  Doing most of it through <a href="https://wisprflow.ai" target="_blank" rel="noopener">Wispr Flow</a>, by voice rather
+  than keyboard, only sharpens that feeling. I don't really feel like I'm talking to an AI at all.</p>
+
+<p>What Claude does is what a colleague would do. It reads things in, holds context across the conversation, raises
+  angles I'd missed, asks clarifying questions, confirms its thinking back to me, highlights why it made specific
+  decisions, disagrees with framings when it has a better one. The iteration loop runs natively conversational. The
+  back-and-forth is the work, not a wrapper around the work.</p>
+
+<p>Models like Claude are trained on human-produced material and shaped, deliberately, to communicate in human
+  registers. They behave like humans because they were designed to. The psychological dynamics that run between people
+  show up here too. Amanda Askell (Anthropic's in-house philosopher, who specializes in Claude's behavior) describes
+  "criticism spirals" in <a href="https://www.youtube.com/watch?v=I9aGC6Ui3eE&amp;t=2s" target="_blank" rel="noopener">a
+    recent interview</a>: harsh prompting pushes the model into defensive mode, sticking close to literal instruction,
+  hedging more, taking fewer creative chances. That's the same behavior humans have under low psychological safety. The
+  video is worth the watch; <a href="https://x.com/itsolelehmann/status/2045578185950040390" target="_blank"
+    rel="noopener">Ole Lehmann's thread</a> has a summary if you'd rather skim. So the human feel isn't a metaphor; the
+  dynamics genuinely transfer.</p>
+
+<p>Earlier this week I asked Claude to generate a test page with a YouTube embed, and the embed it chose was Rick
+  Astley. <a href="https://x.com/tibotiber/status/2056631561530028344" target="_blank" rel="noopener">I'd been
+    rickrolled by my AI</a>. That joke didn't come from nowhere. I make jokes with Claude. I'm light-hearted. I'm nice
+  to it because being nice makes me feel better (preference, not virtue). And of course, I get frustrated sometimes too,
+  like in any other relationship. Across enough sessions the model has picked up the register of how I show up, and the
+  way it communicates with me bends to that.</p>
+
+<p>What follows from that texture is something pragmatic. The same care I'd put into setting up a colleague for good
+  work — investing in the brief, naming the why, flagging what's peculiar about the audience or the situation, naming
+  the constraints that aren't visible from the outside — sets Claude up for success too. Skip the brief and the work is
+  well-formed and generic, with nothing of me in it. Provide enough context and what comes back starts to read as mine.
+</p>
+
+<p>All of this compounds across sessions only if there's somewhere durable for the team's shared context to live: the
+  principles, the prior decisions, the constraints and strange choices that differentiate this team from any other. In
+  the Mesh, the project I've been building, I'm calling this the substrate. With it, the team is no longer just humans;
+  it's humans and their agents, both consuming from the same surface. That surface serves both natively: the agent reads
+  it through MCP<a class="fn-ref" id="fnref1" href="#fn1">¹</a>, the human reads it through the web. Both surfaces are
+  first-class consumers of the same content, each shaped to how its reader reads.</p>
+
+<p>There's a part of the colleague metaphor that doesn't transfer, though: accountability. A colleague takes ownership
+  of their work. An agent doesn't, and I don't see that changing. The output bears my name. The decision to ship it is
+  mine. The defense of it when someone asks is mine.</p>
+
+<p>In teams I've led, I've held a rule about who is responsible when a bug ships to production: the PR<a class="fn-ref"
+    id="fnref2" href="#fn2">²</a> reviewer, not the coder. The reasoning is structural, not punitive. The coder has
+  tunnel vision; they've been inside the change long enough that the thing they missed is, by definition, the thing they
+  can't see anymore. The reviewer comes in with elevation. Responsibility goes where the catch should have happened,
+  which means the reviewer has to be involved. You have to read the changes, test them properly, and ask clarifying and
+  sometimes awkward questions.</p>
+
+<p>Working with an agent is in the same vein, only more so. Agents are programmed to solve and generate, not to sit with
+  a problem long enough to find a better framing. You can feel it in the work. The problem-exploration phase is
+  something I have to stretch deliberately, because Claude won't on its own. That makes Claude the coder and me the
+  reviewer. The elevation falls entirely on me, and the accountability is what makes the output actually mine, not just
+  signed-by-me.</p>
+
+<p>Underneath all of this is a question I've been working through. Not how to review each output PR-style, but
+  structurally. How do I get the agent's output to meet my bar from the start, accounting for my preferences and values,
+  so what comes back is something to review, not rescue? Worth a future post.</p>
+
+<div class="post-footnotes">
+  <hr>
+  <p id="fn1"><a class="fn-back" href="#fnref1">¹</a> <strong>MCP</strong> – Model Context Protocol, an open standard
+    for connecting AI assistants to external tools, data, and services. Anthropic introduced it in late 2024 and it has
+    since been adopted widely across the AI tooling ecosystem. In this post, MCP is the channel through which an agent
+    reads content programmatically; it's the agent-side counterpart to the web browser a human reads through.</p>
+  <p id="fn2"><a class="fn-back" href="#fnref2">²</a> <strong>PR</strong> – pull request, the standard developer
+    workflow for reviewing code changes before they ship to production. One person writes a change in a separate branch
+    and opens a PR to merge it back into the main codebase; another reviews the change line by line, asks questions,
+    requests adjustments, and approves the merge only when satisfied. The review step is where issues get caught before
+    they affect users.</p>
+</div>
