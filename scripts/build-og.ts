@@ -13,9 +13,9 @@ const OUT_DIR = join(ROOT, 'public/og')
 const WIDTH = 1200
 const HEIGHT = 630
 const PAD = 80
-const BG = '#111111'
-const FG = '#e6e6e6'
-const DIM = '#999999'
+const BG = '#161513'
+const FG = '#e8e5e0'
+const DIM = '#a09c96'
 
 async function loadFonts() {
   const [charterBold, charterItalic, plexRegular, plexBold] = await Promise.all([
