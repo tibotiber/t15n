@@ -15,7 +15,7 @@ const HEIGHT = 630
 const PAD = 80
 const BG = '#161513'
 const FG = '#e8e5e0'
-const DIM = '#6a6660'
+const DIM = '#a09c96'
 
 async function loadFonts() {
   const [charterBold, charterItalic, plexRegular, plexBold] = await Promise.all([
