@@ -104,6 +104,7 @@ function head(title: string, description: string | undefined, og: OgInfo): strin
   <meta name="twitter:image" content="${imageUrl}">
   <meta name="twitter:creator" content="@tibotiber">
   <meta name="twitter:site" content="@tibotiber">
+  <script src="https://cdn.usefathom.com/script.js" data-site="SLSRBAHA" defer></script>
 </head>
 <body>`
 }
