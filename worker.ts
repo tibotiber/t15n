@@ -182,7 +182,7 @@ function renderAbout(): string {
 
     <p>French by origin, studied in Germany, twelve years in Malaysia, now in Singapore with my wife and three kids.</p>
 
-    <p>On <a href="https://x.com/tibotiber" target="_blank" rel="noopener">X</a> as @tibotiber. Email me at <a href="mailto:thibaut@smplrspace.com">thibaut@smplrspace.com</a>.</p>
+    <p>On <a href="https://x.com/tibotiber" target="_blank" rel="noopener">X</a> as @tibotiber. Email me at <a href="mailto:hi@t15n.io">hi@t15n.io</a>.</p>
   </article>
 </div>`
   return page('About', body, 'Thibaut Tiberghien, founder of Smplrspace. Building The Mesh, an opinionated context layer where the understanding you build with AI doesn\'t evaporate when the session ends.', {
