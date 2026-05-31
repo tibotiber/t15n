@@ -7,10 +7,12 @@ import { htmlToMarkdown, readingTime } from './src/markdown'
 // Add one import + one entry here for each new post.
 import fifteenYearsHtml from './src/posts/2026-05-19-fifteen-years.html'
 import colleagueICantBlameHtml from './src/posts/2026-05-23-the-colleague-i-cant-blame.html'
+import whereTasteDropsOutHtml from './src/posts/2026-06-01-where-taste-drops-out.html'
 
 const POST_FILES: Array<{ filename: string; content: string }> = [
   { filename: '2026-05-19-fifteen-years.html', content: fifteenYearsHtml },
   { filename: '2026-05-23-the-colleague-i-cant-blame.html', content: colleagueICantBlameHtml },
+  { filename: '2026-06-01-where-taste-drops-out.html', content: whereTasteDropsOutHtml },
 ]
 
 // --- Metadata parser ---

@@ -1,0 +1,38 @@
+<!--
+title: Where taste drops out
+date: 2026-06-01
+summary: AI-generated output tends toward the generic, even inside sharp, opinionated products. How do you make the AI carry the product's opinions and taste? Not with a clever prompt, but by putting the product's principles in front of it the moment it generates.
+topics: Opinionated AI
+aside: [placeholder]
+-->
+
+<div class="kicker">Opinionated AI · 01 June 2026</div>
+<h1>Where taste drops out</h1>
+<p class="lead">How do you make a product's AI behave like the rest of the product? How do you get it to carry the same opinions, the same taste, the same bar everything else is held to?</p>
+
+<p>Apple's Genmoji turns a prompt into a generic sticker. Figma Make generates layouts a careful designer would quietly redo. Notion's AI answers in the flat, capable register of no one in particular. In each case the surrounding product is sharp, considered, clearly made by people with taste, but the generated artifact isn't. The quality drops at the AI layer, and you can see the seam.</p>
+
+<p>There's a structural reason for it. Without steering, an AI model gravitates toward the generic, middle-of-the-road register of its training data. If your product lives there, the output matches it and nothing feels off. If your product is crafted, opinionated, deliberately not generic, what it generates ends up at odds with the rest of the product.</p>
+
+<p>It bites hardest where the output stands in for a person. When the AI writes the document, the plan, or the report someone on the team would have written, the work goes out under their name. Work that carries a name carries the trust behind it. A colleague earns that trust over time, and the team reads their output differently because of it. Generic output borrows the name without the trust. It's consensus wearing a colleague's clothing.</p>
+
+<p>I ran into this long before I framed it as a product problem. Most of my own work now happens with Claude, and left to itself, the drafts it produced were competent and anonymous. The fix was never a clever prompt. It was getting Claude to understand me well enough that the work came back feeling like mine: feeding it the principles I work by, the voice, the constraints, the reasons behind choices it had no way of knowing, and iterating until it did. Then I made sure that context was there at the start of every session rather than reconstructed from scratch each time.</p>
+
+<p>After enough rounds, that recurring context stopped looking like setup and started looking like an asset, the real groundwork the work stood on. As my team adopted Claude, it answered their questions too: a way for each person's work to come back theirs, and for one person's work to lift the next person's. Across a team, good context compounds instead of turning into noise everyone has to sift through.</p>
+
+<p>I wrote about the colleague-shaped side of that in <a href="https://t15n.io/the-colleague-i-cant-blame">an earlier post</a>, closing on the question of how you get agent output to meet your bar at the source. So I've been building it. The Mesh is a context layer, a place a team and its agents write to and read from, designed from the start for both kinds of reader. The bet underneath it is that writing good context is worth far more than it costs. Skimp on it and the first thing to go is the why behind a decision: the option ruled out, the constraint no one wrote down, the judgment that made the call. The output keeps coming, but the understanding the team built up thins into cognitive debt.<a class="fn-ref" id="fnref1" href="#fn1">¹</a> When I say context, I mean the everyday kind: what you're missing when you tell a colleague you don't have context on a piece of work. An agent needs exactly the same thing. It's the substrate the team works from, the ground the work is anchored in and grows out from. So writing into it should be a more involved process than most tools make it. Every write is an investment, not a dump.</p>
+
+<p>That runs against the grain of how AI has mostly been applied to knowledge work. The dominant move is to point a model at the context you already have, the existing docs, tickets, and threads, and generate from that. It's a read-heavy bet: writing stays cheap, because the promise is that you don't have to do anything new, and the model does the work at read time. Decades of software engineering point the other way: in a database, a search index, or a cache, you pay at write time, carefully, once, so every read afterward is cheap. Reads outnumber writes by orders of magnitude, so the trade is worth making.</p>
+
+<p>I wonder if AI tools inverted this less by design than by what sells. "Point us at what you already have" promises value with no work. "Invest in writing things down well" asks for discipline up front. The first is a much easier thing to sell. But the cost doesn't disappear when you defer it; it moves to the read side, where you keep paying for what you didn't write down. And with AI generating more content every day, that cost is growing fast.</p>
+
+<p>The Mesh takes the expensive-write side of that trade on purpose. There's no traditional editor; writing is agent-assisted and deliberate, and the principles that drive a team's work are present at the moment of writing, not filed away in a wiki nobody opens and not bolted on at review once the artifact already exists. By the time something is written, it has already been shaped by the standards it was meant to meet.</p>
+
+<p>Put that way, it sounds more deliberate than it was. I didn't set out to build a context layer; I built what I needed, first for myself and then for my team, and the design only looks intentional in hindsight.</p>
+
+<p>Every product that generates content with AI is up against the same question: how do you make the AI carry the product's opinions and taste? I have one answer that seems to be working, at the scale of a small team building something new. What I don't know is whether it holds at a company of hundreds, with a product already in millions of hands, and a design language years in the making. The people I'd most want to trade notes with are working on products like that — carefully crafted, clearly opinionated, where AI is now part of what ships. If that's you, I'd genuinely want to hear how you're thinking about it.</p>
+
+<div class="post-footnotes">
+  <hr>
+  <p id="fn1"><a class="fn-back" href="#fnref1">¹</a> <strong>Cognitive debt</strong> – content that captures what a team decided but not why, leaving the reasoning to be re-derived later, often wrongly. I borrowed the term from <a href="https://margaretstorey.com/blog/2026/02/09/cognitive-debt/" target="_blank" rel="noopener">a post</a> by Margaret-Anne Storey, Professor of Computer Science at the University of Victoria.</p>
+</div>
