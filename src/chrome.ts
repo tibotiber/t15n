@@ -89,6 +89,10 @@ function head(title: string, description: string | undefined, og: OgInfo): strin
   <meta name="author" content="Thibaut Tiberghien">
   <link rel="stylesheet" href="/styles.css">
   <link rel="alternate" type="application/rss+xml" title="t15n" href="/rss.xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
   <title>${esc(titleText)}</title>
   <meta property="og:title" content="${esc(ogTitle)}">
   <meta property="og:description" content="${esc(ogDesc)}">
