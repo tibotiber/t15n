@@ -8,11 +8,13 @@ import { htmlToMarkdown, readingTime } from './src/markdown'
 import fifteenYearsHtml from './src/posts/2026-05-19-fifteen-years.html'
 import colleagueICantBlameHtml from './src/posts/2026-05-23-the-colleague-i-cant-blame.html'
 import whereTasteDropsOutHtml from './src/posts/2026-05-31-where-taste-drops-out.html'
+import keyboardAndColleagueHtml from './src/posts/2026-06-12-the-keyboard-and-the-colleague.html'
 
 const POST_FILES: Array<{ filename: string; content: string }> = [
   { filename: '2026-05-19-fifteen-years.html', content: fifteenYearsHtml },
   { filename: '2026-05-23-the-colleague-i-cant-blame.html', content: colleagueICantBlameHtml },
   { filename: '2026-05-31-where-taste-drops-out.html', content: whereTasteDropsOutHtml },
+  { filename: '2026-06-12-the-keyboard-and-the-colleague.html', content: keyboardAndColleagueHtml },
 ]
 
 // --- Metadata parser ---
