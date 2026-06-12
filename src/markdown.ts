@@ -65,9 +65,6 @@ export function htmlToMarkdown(html: string): string {
   // HR
   md = md.replace(/<hr[^>]*>/gi, '\n\n---\n\n')
 
-  // Lead paragraph → italicised
-  md = md.replace(/<p\b[^>]*class="lead"[^>]*>([\s\S]*?)<\/p>/gi, (_, t) => '\n*' + inlineMarkdown(t) + '*\n')
-
   // Regular paragraphs
   md = md.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, (_, t) => '\n' + inlineMarkdown(t) + '\n')
 
