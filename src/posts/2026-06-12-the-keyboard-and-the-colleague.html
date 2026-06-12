@@ -1,0 +1,34 @@
+<!--
+title: The keyboard and the colleague
+date: 2026-06-12
+summary: A popular prediction says AI agents will soon make software interfaces obsolete. But the interface and the agent aren't competitors, they're two ways to work, one hands-on and one delegated. The real question is whether and how a product keeps its craft and point of view when the work moves to the agent.
+topics: Product design
+aside: An earlier draft ran the whole thing through programming paradigms: UI as imperative, agent as declarative, MCP tools as functional. I cut it. A joy to write, no help to read. I'm sure I'll find an excuse to use it again someday.
+-->
+
+<div class="kicker">Product design · 12 June 2026</div>
+<h1>The keyboard and the colleague</h1>
+
+<p>A prediction has been making the rounds, and Tyler Denk, beehiiv's CEO, <a href="https://www.linkedin.com/feed/update/urn:li:activity:7467637563575611392" target="_blank" rel="noopener">put it as bluntly as anyone</a>: the UI/UX for most software won't matter in two years. Teams won't log in and click through dashboards. They'll work through an agent layer that plugs into the tools they already use. His example was Linear, and how his own team has been using it.</p>
+
+<p>They barely open the Linear web app anymore. They file tickets from Slack and run their analysis through Claude, where the Linear MCP<a class="fn-ref" id="fnref1" href="#fn1">¹</a> sits alongside GitHub and the rest of their stack. He calls that "infinitely more powerful." Then Cristina Cordova, Linear's COO, <a href="https://www.linkedin.com/feed/update/urn:li:activity:7467637563575611392?commentUrn=urn%3Ali%3Acomment%3A%28activity%3A7467637563575611392%2C7468063332491735040%29&amp;dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287468063332491735040%2Curn%3Ali%3Aactivity%3A7467637563575611392%29" target="_blank" rel="noopener">replied</a> with their own numbers. Agents and MCPs now account for 42% of new issue creation, yet in-app usage is at an all-time high. Her reading: "Agentic workflows and a great UI don't always compete. They can amplify each other."</p>
+
+<p>I've been thinking a lot about the role of UI in the AI era, and this exchange crystallized it for me. AI and UI aren't rivals competing for the workflow. They are two complementary ways of relating to the same work. The question was never which surface wins, but how involved you want to be with the work itself.</p>
+
+<p>Picture working next to a colleague. You can take the keyboard, hands on the material, and touch every single detail of the work directly (what I call full bandwidth). Or, you can describe what you want and let your colleague carry it out, because they're quick, they know what they're doing, and you trust them. The UI is the keyboard, and the agent is the colleague. When Denk says the MCP is so much more powerful for his team, that's fair praise for the colleague, for its reach across his whole stack. But leaning on the colleague doesn't retire the keyboard, it just changes when you take it.</p>
+
+<p>Through that lens, Cordova's numbers are exactly what you'd expect. The agent takes on the low-judgment work, like issue creation, repetitive inputs, and pulling related context from your stack, and lets you concentrate on the parts that carry judgment: planning, prioritization, review. That split is never clean, and everyone draws the line somewhere different. Wherever it sits, the web app doesn't matter less, the work left in it matters more. That's why in-app use climbs as agents take over: the surface area that counts shifts up, toward judgment.</p>
+
+<p>The app holds the judgment work you'd never hand off: building your own understanding, seeing how things relate, a hierarchy, a layout, a dependency graph, legible at a glance in a way no narrated summary matches. And that view is stable, which reduces the cognitive load: you already know how to read it, and you pick up where you left off, while the agent generates something new each time you ask. A rhythm emerges: ask the agent to get a sense of things, go deep in the app, ask it to modify or connect something, watch it change, and back again.</p>
+
+<p>The app and the agent are two channels through which users touch a product, among many: support, onboarding, marketing, etc. UI and UX are often amalgamated, but they're not the same thing: the UI is the surface, the UX is how the product works and how it's experienced, and that's where the opinion and craft live. Linear, for example, is known for being an opinionated product. Its view on how teams should work is spelled out in <a href="https://linear.app/method" target="_blank" rel="noopener">the Linear Method</a> and built into the defaults and constraints the product carries. AI and MCPs add surfaces alongside the UI that fall under the UX too.</p>
+
+<p>These new surfaces don't carry a product's opinion for free. A raw MCP is powerful: through an agent you can do almost anything the product permits, but power isn't a point of view. Plenty of the MCPs I use every day are thin pass-throughs: the capability is there, the craft isn't, and you feel it.<a class="fn-ref" id="fnref2" href="#fn2">²</a> The surfaces hold different amounts of opinion. An MCP exposes the actions, like an API, and leaves the rest to the agent. AI built into the product has more room for craft, because the product team shapes the whole interaction and not just the tool surface, while the UI still holds the most opinion naturally. Giving any of them a real point of view is work someone has to do. It's part of why I'm building the Mesh, a context layer (I call it substrate) that carries that point of view onto the agent surface. I see it as an experiment in how product teams can seize the opportunities agents open up without giving up the opinion a good product carries.</p>
+
+<p>None of this is a break from how good products have always been built, just the same design work across more surfaces. The canvas got wider, not different. The question I keep coming back to, and one I'd ask anyone adding an agentic layer to their product: how are you carrying the opinion and care you put into the app layer onto the agentic layer? If you're thinking about this too, I'd love to chat.</p>
+
+<div class="post-footnotes">
+  <hr>
+  <p id="fn1"><a class="fn-back" href="#fnref1">¹</a> <strong>MCP</strong> – Model Context Protocol, an open standard that lets an AI assistant work directly with an app's data and actions instead of going through its screens. It's the channel an agent works through, the way a person works through the interface.</p>
+  <p id="fn2"><a class="fn-back" href="#fnref2">²</a> The same gap shows up in what AI generates, not just the surface you reach it through. I wrote about that side in <a href="https://t15n.io/where-taste-drops-out">Where taste drops out</a>.</p>
+</div>

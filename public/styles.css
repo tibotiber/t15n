@@ -570,6 +570,5 @@ footer a:hover { color: var(--fg2); border-bottom: none; }
   .page { padding: 48px 20px 80px; }
   footer { padding: 28px 20px; }
   h1 { font-size: 30px; }
-  .lead { font-size: 17.5px; }
   h2 { font-size: 22px; }
 }
