@@ -197,7 +197,24 @@ function homeCard(): El {
     tagline,
   )
 
-  return frame(inner)
+  // Byline pinned to the bottom centre, same treatment as the post cards.
+  const byline = el(
+    'div',
+    {
+      style: {
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100%',
+        fontFamily: 'Plex Mono',
+        fontWeight: 400,
+        fontSize: 24,
+        color: DIM,
+      },
+    },
+    'Thibaut Tiberghien',
+  )
+
+  return frame([inner, byline])
 }
 
 async function render(tree: El, fonts: Awaited<ReturnType<typeof loadFonts>>): Promise<Uint8Array> {
@@ -212,6 +229,10 @@ async function main() {
   const home = await render(homeCard(), fonts)
   await writeFile(join(OUT_DIR, 'index.png'), home)
   console.log(`  public/og/index.png  ${home.byteLength.toLocaleString()} bytes`)
+
+  // Note: public/og/the-mesh.png is NOT generated here. It's a browser
+  // screenshot of public/_og-the-mesh.html (the satori path can't render the
+  // hero's feTurbulence highlighter). Regenerate it by reshooting that page.
 
   const files = (await readdir(POSTS_DIR)).filter((f) => f.endsWith('.html')).sort()
   for (const f of files) {

@@ -17,6 +17,7 @@ export interface OgInfo {
   date?: string
   tag?: string
   fullTitle?: string
+  imageAlt?: string
 }
 
 const SITE = 'https://t15n.io'
@@ -74,6 +75,7 @@ function head(title: string, description: string | undefined, og: OgInfo): strin
   const type = og.type ?? 'website'
   const imageUrl = `${SITE}/og/${slug}.png`
   const pageUrl = `${SITE}${path}`
+  const imageAlt = og.imageAlt ?? ogTitle
   const articleTags =
     type === 'article'
       ? `
@@ -89,6 +91,7 @@ function head(title: string, description: string | undefined, og: OgInfo): strin
   <meta name="author" content="Thibaut Tiberghien">
   <link rel="stylesheet" href="/styles.css">
   <link rel="alternate" type="application/rss+xml" title="t15n" href="/rss.xml">
+  <link rel="canonical" href="${pageUrl}">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
@@ -97,8 +100,10 @@ function head(title: string, description: string | undefined, og: OgInfo): strin
   <meta property="og:title" content="${esc(ogTitle)}">
   <meta property="og:description" content="${esc(ogDesc)}">
   <meta property="og:image" content="${imageUrl}">
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${esc(imageAlt)}">
   <meta property="og:url" content="${pageUrl}">
   <meta property="og:type" content="${type}">
   <meta property="og:site_name" content="t15n">${articleTags}
@@ -106,6 +111,7 @@ function head(title: string, description: string | undefined, og: OgInfo): strin
   <meta name="twitter:title" content="${esc(ogTitle)}">
   <meta name="twitter:description" content="${esc(ogDesc)}">
   <meta name="twitter:image" content="${imageUrl}">
+  <meta name="twitter:image:alt" content="${esc(imageAlt)}">
   <meta name="twitter:creator" content="@tibotiber">
   <meta name="twitter:site" content="@tibotiber">
   <script src="https://cdn.usefathom.com/script.js" data-site="SLSRBAHA" defer></script>

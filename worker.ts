@@ -197,10 +197,17 @@ function renderAbout(): string {
 }
 
 function renderTheMesh(): string {
-  return page('The Mesh', theMeshBody(), 'The Mesh — a knowledge base that writes with you, not just for you. An experiment in what shared knowledge should be once AI does the writing.', {
-    slug: 'index',
-    path: '/the-mesh',
-  })
+  return page(
+    'The Mesh',
+    theMeshBody(),
+    'A knowledge base that writes with you, not just for you. The Mesh keeps the reasoning behind AI work so it compounds across a team instead of evaporating.',
+    {
+      slug: 'the-mesh',
+      path: '/the-mesh',
+      fullTitle: 'The Mesh — a knowledge base that writes with you',
+      imageAlt: 'The Mesh — a knowledge base that writes with you, not just for you.',
+    },
+  )
 }
 
 function render404(): string {
