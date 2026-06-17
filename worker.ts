@@ -179,11 +179,11 @@ function renderAbout(): string {
       <img class="about-photo" src="/img/about-photo.jpg" alt="Thibaut Tiberghien" width="1000" height="1000">
     </div>
 
-    <p>When I paused recently to look at what actually interested me, fifteen years of work connected into one thread: making digital things and ideas tangible so they can be manipulated, understood, and decided on. Tangible user interfaces during my Master's in Germany. A PhD on semantic web technologies — knowledge structured as graphs you can navigate, where the shape itself derives new information. Years of data-visualization work. Smplrspace, which anchors building data to the space it describes and visualizes it in place. The Mesh, which turns thinking into a permanent, visible, addressable asset for the team, instead of letting it die in chat windows. Same impulse, different scopes.</p>
+    <p>When I paused recently to look at what actually interested me, fifteen years of work connected into one thread: making digital things and ideas tangible so they can be manipulated, understood, and decided on. Tangible user interfaces during my Master's in Germany. A PhD on semantic web technologies — knowledge structured as graphs you can navigate, where the shape itself derives new information. Years of data-visualization work. Smplrspace, which anchors building data to the space it describes and visualizes it in place. The Mesh, which turns thinking into a permanent, visible, addressable asset for the team, instead of letting it die in chat windows. Same pursuit, different scopes.</p>
 
     <p>I write here about knowledge infrastructure, the cognitive debt teams accumulate when they use AI without substrate, what agent-native teams actually require, and why design-led companies win in their fields.</p>
 
-    <p>Smplrspace's first hire was a designer, at a stage when every hire was existential. The bet has aged well. The same instinct shows up in the work I admire most: design as judgment, not decoration. What gets left out matters as much as what stays in.</p>
+    <p>Smplrspace's first hire was a designer, at a stage when every hire was existential, and one of the best choices we made. The same instinct shows up in the work I admire most: design as judgment, not decoration. What gets left out matters as much as what stays in.</p>
 
     <p>French by origin, studied in Germany, twelve years in Malaysia, now in Singapore with my wife and three kids.</p>
 
