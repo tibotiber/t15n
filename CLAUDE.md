@@ -57,7 +57,7 @@ Knowledge infrastructure · cognitive debt from AI-without-substrate · agent-na
 
 ## Design — do not break
 
-- **Monochrome.** No accent colour. Black-and-white scale only.
+- **Monochrome.** No accent colour. Black-and-white scale only. **One deliberate exception:** the yellow highlighter ("stabilo") swipe behind the "The Mesh" title on the `/the-mesh` hero (`.mesh-hl-mark` in `styles.css`, an SVG marker stroke). It is the single, intentional spark of colour on the site — do not "fix" it to monochrome, and do not introduce colour anywhere else.
 - **Never pure black or pure white** for text or backgrounds. Light theme: bg `#ffffff`, text `#1d1d1f`. Dark theme: bg `#111111`, text `#e6e6e6`. The Mesh's reading research informs these choices — pure values cause eye strain on long-form.
 - **Typography:** Charter for headings and body, Inter for UI, IBM Plex Mono for kickers, meta, wordmark, code. Do not introduce new font families. If you ever do, the font's license file must ship alongside the woff2 in `public/fonts/<family>/LICENSE.txt`, and any required attribution (e.g. trademark acknowledgments) must be added to [`NOTICE.md`](NOTICE.md).
 - **Reading width:** ~640px (`--reading-width` CSS variable). Single centred column.

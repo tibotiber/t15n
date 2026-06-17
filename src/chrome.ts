@@ -122,7 +122,8 @@ function header(): string {
   </div>
   <nav class="header-nav">
     <a href="/">home</a>
-    <a href="/about">about</a>
+    <a href="/the-mesh">the mesh</a>
+    <a href="/about">about me</a>
     <a href="/rss.xml" target="_blank" rel="noopener">rss</a>
     <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">
       <svg id="theme-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></svg>
@@ -134,7 +135,7 @@ function header(): string {
 function footer(): string {
   return `<footer>
   <span class="ft-mark">t15n</span>
-  <span class="ft-byline">Thibaut Tiberghien · <a href="https://x.com/tibotiber" target="_blank" rel="noopener">@tibotiber on X</a> · <a href="mailto:hi@t15n.io">hi@t15n.io</a> · <a href="/rss.xml" target="_blank" rel="noopener">RSS</a></span>
+  <span class="ft-byline"><a href="/about">Thibaut Tiberghien</a> · <a href="https://x.com/tibotiber" target="_blank" rel="noopener">@tibotiber on X</a> · <a href="mailto:hi@t15n.io">hi@t15n.io</a> · <a href="/rss.xml" target="_blank" rel="noopener">RSS</a></span>
   <span class="ft-note">Built on Cloudflare. HTML by hand, mine or Claude's.</span>
 </footer>`
 }

@@ -27,3 +27,9 @@ IBM Plex Mono is used under the SIL Open Font License, Version 1.1. "Plex" is a 
 > Copyright © 2017 IBM Corp. with Reserved Font Name "Plex".
 
 Full license: [`public/fonts/ibm-plex-mono/LICENSE.txt`](public/fonts/ibm-plex-mono/LICENSE.txt).
+
+## Images
+
+### The Mesh hero photo
+
+[`public/img/mesh-hero.jpg`](public/img/mesh-hero.jpg) — photo by [Priscilla Du Preez](https://unsplash.com/photos/a-man-sitting-in-front-of-a-laptop-computer-OEdkPaxYMXU) on [Unsplash](https://unsplash.com), used under the [Unsplash License](https://unsplash.com/license). Rendered in black and white.

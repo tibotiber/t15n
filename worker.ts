@@ -2,6 +2,7 @@ import { page, formatDate, esc } from './src/chrome'
 import type { PostMeta } from './src/chrome'
 import { generateRSS } from './src/rss'
 import { htmlToMarkdown, readingTime } from './src/markdown'
+import { theMeshBody } from './src/the-mesh'
 
 // --- Post registry ---
 // Add one import + one entry here for each new post.
@@ -89,7 +90,7 @@ function renderIndex(): string {
   const body = `<div class="page">
   <div class="index-intro">
     <p>On the substrate thinking-with-agents needs.</p>
-    <p>Notes alongside building The Mesh, an opinionated context layer where the understanding you build with AI doesn't evaporate when the session ends.</p>
+    <p>Notes alongside building <a href="/the-mesh">The Mesh</a>, an opinionated context layer where the understanding you build with AI doesn't evaporate when the session ends.</p>
   </div>
   <ul class="post-list">${items}
   </ul>
@@ -173,7 +174,7 @@ function renderAbout(): string {
       <div class="about-top-text">
         <div class="kicker">About</div>
         <h1>Thibaut Tiberghien.</h1>
-        <p>I run <a href="https://smplrspace.com" target="_blank" rel="noopener">Smplrspace</a>, a data-visualization company for commercial real estate, and I'm building The Mesh, an opinionated context layer where the understanding you build with AI doesn't evaporate when the session ends.</p>
+        <p>I run <a href="https://smplrspace.com" target="_blank" rel="noopener">Smplrspace</a>, a data-visualization company for commercial real estate, and I'm building <a href="/the-mesh">The Mesh</a>, an opinionated context layer where the understanding you build with AI doesn't evaporate when the session ends.</p>
       </div>
       <img class="about-photo" src="/img/about-photo.jpg" alt="Thibaut Tiberghien" width="1000" height="1000">
     </div>
@@ -186,12 +187,19 @@ function renderAbout(): string {
 
     <p>French by origin, studied in Germany, twelve years in Malaysia, now in Singapore with my wife and three kids.</p>
 
-    <p>On <a href="https://x.com/tibotiber" target="_blank" rel="noopener">X</a> as @tibotiber. Email me at <a href="mailto:hi@t15n.io">hi@t15n.io</a>.</p>
+    <p>On X as <a href="https://x.com/tibotiber" target="_blank" rel="noopener">@tibotiber</a>. Email me at <a href="mailto:hi@t15n.io">hi@t15n.io</a>.</p>
   </article>
 </div>`
   return page('About', body, 'Thibaut Tiberghien, founder of Smplrspace. Building The Mesh, an opinionated context layer where the understanding you build with AI doesn\'t evaporate when the session ends.', {
     slug: 'index',
     path: '/about',
+  })
+}
+
+function renderTheMesh(): string {
+  return page('The Mesh', theMeshBody(), 'The Mesh — a knowledge base that writes with you, not just for you. An experiment in what shared knowledge should be once AI does the writing.', {
+    slug: 'index',
+    path: '/the-mesh',
   })
 }
 
@@ -223,6 +231,11 @@ export default {
     // About page
     if (pathname === '/about') {
       return new Response(renderAbout(), { headers: { 'Content-Type': 'text/html; charset=utf-8' } })
+    }
+
+    // The Mesh landing page
+    if (pathname === '/the-mesh') {
+      return new Response(renderTheMesh(), { headers: { 'Content-Type': 'text/html; charset=utf-8' } })
     }
 
     // RSS feed
