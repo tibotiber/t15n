@@ -238,7 +238,7 @@ export function theMeshBody(): string {
   <section class="mesh2-sec mesh2-close">
     <div class="mesh2-inner reveal">
       <p>The Mesh runs today, built with Claude and using itself. It is more of an experiment than a product, and the team at Smplrspace already uses it. <span class="mesh-muted">If any of this resonates, or you are putting an agent layer on your own product and asking what good output even means once the agent writes it, I'm open to talk.</span></p>
-      <p class="mesh-more"><a href="/about">About me <span class="arrow" aria-hidden="true"><svg viewBox="0 0 5 10"><path d="M0.7 0.7 4.3 5 0.7 9.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p>
+      <p class="mesh-more"><a href="/what-i-mean-by-the-mesh">The longer story <span class="arrow" aria-hidden="true"><svg viewBox="0 0 5 10"><path d="M0.7 0.7 4.3 5 0.7 9.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a><a href="/about">About me <span class="arrow" aria-hidden="true"><svg viewBox="0 0 5 10"><path d="M0.7 0.7 4.3 5 0.7 9.3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></p>
     </div>
   </section>
 

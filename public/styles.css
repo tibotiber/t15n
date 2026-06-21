@@ -742,7 +742,7 @@ footer a:hover { color: var(--fg2); border-bottom-color: var(--fg2); }
   margin-bottom: 1.2em;
 }
 .mesh-close > p:last-of-type { color: var(--fg2); }
-.mesh-more { margin-top: 26px; }
+.mesh-more { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: baseline; }
 .mesh-more a {
   font-family: var(--font-mono);
   font-size: 11px;
