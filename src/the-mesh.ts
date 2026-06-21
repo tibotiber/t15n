@@ -5,7 +5,7 @@
 // Opening matches the t15n reading column; the rest runs in full-bleed bands.
 
 // Three-party diagram — shares .mesh-fig-* element classes for theming.
-const DIAGRAM_SVG = `<svg viewBox="0 0 640 246" role="img" aria-label="You, the agent, and the Mesh's own point of view all meet in one page.">
+const DIAGRAM_SVG = `<svg viewBox="0 0 640 246" role="img" aria-label="You, the agent, and The Mesh's own point of view all meet in one page.">
     <line class="mesh-fig-link" x1="110" y1="66" x2="320" y2="172"/>
     <line class="mesh-fig-link" x1="320" y1="66" x2="320" y2="172"/>
     <line class="mesh-fig-link" x1="530" y1="66" x2="320" y2="172"/>
@@ -201,7 +201,7 @@ export function theMeshBody(): string {
       <div class="mesh2-split">
         <div class="reveal">
           <h2>There is no text editor. You direct an agent.</h2>
-          <p>You tell an agent what you want, and the Mesh briefs it on what good work looks like. The agent writes from both, so every page has three authors.</p>
+          <p>You tell an agent what you want, and The Mesh briefs it on what good work looks like. The agent writes from both, so every page has three authors.</p>
         </div>
         <div class="mesh2-fig reveal">${DIAGRAM_SVG}</div>
       </div>
@@ -211,7 +211,7 @@ export function theMeshBody(): string {
   <section class="mesh2-sec mesh2-alt mesh2-making">
     <div class="mesh2-inner">
       <h2 class="reveal">The difference is the brief.</h2>
-      <p class="reveal">Give the same request to a generic assistant and to the Mesh. The generic one returns the safe, hedged answer, while the Mesh returns a point of view anchored in the team's actual context.</p>
+      <p class="reveal">Give the same request to a generic assistant and to The Mesh. The generic one returns the safe, hedged answer, while The Mesh returns a point of view anchored in the team's actual context.</p>
       <div class="mesh2-prompt reveal"><span class="pr-k">The request</span>"Write up why we're moving standups to async."</div>
       ${MAKING}
     </div>
@@ -230,7 +230,7 @@ export function theMeshBody(): string {
   <section class="mesh2-sec mesh2-alt">
     <div class="mesh2-inner">
       <h2 class="reveal">No trust, no adoption.</h2>
-      <p class="reveal">Of everything AI could be applied to, code was one of the first to earn that trust. There are a few reasons, but the most interesting one, for what we're doing, is that a wrong answer was survivable there: every change is a diff, it gets reviewed, it can be rolled back, and it carries a name. Giving knowledge work that same safety net is one of the things the Mesh is working toward. It is not all there yet, but we have started putting the first pieces in place.</p>
+      <p class="reveal">Of everything AI could be applied to, code was one of the first to earn that trust. There are a few reasons, but the most interesting one, for what we're doing, is that a wrong answer was survivable there: every change is a diff, it gets reviewed, it can be rolled back, and it carries a name. Giving knowledge work that same safety net is one of the things The Mesh is working toward. It is not all there yet, but we have started putting the first pieces in place.</p>
       <div class="mesh-net reveal">${NET}</div>
     </div>
   </section>
